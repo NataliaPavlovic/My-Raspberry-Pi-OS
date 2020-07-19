@@ -1,2 +1,6 @@
+enable_uart=1
+
+# specifies that the kernel image should be loaded at address 0.
 kernel_old=1
+# instructs the GPU to not pass any command line arguments to the booted image.
 disable_commandline_tags=1
