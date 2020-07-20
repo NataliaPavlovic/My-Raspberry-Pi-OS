@@ -1,6 +1,9 @@
 #include "printf.h"
 #include "mini_uart.h"
 #include "utils.h"
+#include "timer.h"
+#include "local_timer.h"
+#include "irq.h"
 
 volatile int core_counter = 0;
 
@@ -20,6 +23,14 @@ void kernel_main(int proc_id)
 		init_printf(0, putc);
 		int el = get_el();
 		printf("Exception level: %d \r\n", el);
+		irq_vector_init();
+		
+		timer_init_local();
+
+		timer_init();
+		enable_interrupt_controller();
+		
+		enable_irq();
 	}
 
 	uart_send_string("Hello, from processor ");

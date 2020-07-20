@@ -14,7 +14,7 @@ get32:
 delay:
 	subs x0, x0, #1
 	bne delay
-	ret
+	ret	
 
 .globl get_el
 get_el:
